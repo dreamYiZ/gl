@@ -43,5 +43,5 @@
     "**/*.scss",
     "./esnext/index.js",
     "./esnext/configure.js"
-  ],
+  ]
 }

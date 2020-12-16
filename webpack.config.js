@@ -34,16 +34,15 @@ module.exports = {
     ],
   },
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
-    publicPath: "/",
+    path: path.resolve(__dirname, "dist"),
   },
   devtool: "inline-source-map",
   plugins: [
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
-      title: "Caching",
+      template: path.resolve(__dirname, "public/index.html"),
+      title: "gl",
     }),
     new CopyPlugin({
       patterns: [path.resolve(__dirname, "public"), path.resolve(__dirname, "static")],
@@ -52,9 +51,9 @@ module.exports = {
   devServer: {
     hotOnly: true,
     contentBase: path.join(__dirname, "dist"),
-    host: "0.0.0.0",
     open: "Google Chrome",
     port: 9000,
+    // index: path.join(__dirname, "public/index.html"),
     allowedHosts: ["host.com", "subdomain.host.com"],
     injectHot: (compilerConfig) => compilerConfig.name === "only-include",
   },
