@@ -50,15 +50,8 @@ module.exports = {
     }),
   ],
   devServer: {
-    before: function (app, server, compiler) {
-      app.get("/some/path", function (req, res) {
-        res.json({ custom: "response" });
-      });
-    },
-    // lazy: true,
     hotOnly: true,
     contentBase: path.join(__dirname, "dist"),
-    // liveReload: false,
     host: "0.0.0.0",
     open: "Google Chrome",
     port: 9000,
