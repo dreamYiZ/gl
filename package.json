@@ -38,6 +38,7 @@
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
+    "gl-matrix": "^3.3.0",
     "lodash": "^4.17.20",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",

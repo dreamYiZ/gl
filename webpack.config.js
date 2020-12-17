@@ -10,7 +10,6 @@ module.exports = {
   mode: "development",
   entry: {
     main: "./src/main.js",
-    vendor: "./src/vendor/**/*.js",
   },
   watch: true,
   watchOptions: {
@@ -21,9 +20,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: path.resolve(__dirname, "src"),
-        loader: "babel-loader",
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.css$/i,
@@ -76,10 +80,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    hotOnly: true,
+    liveReload: true,
     contentBase: path.join(__dirname, "dist"),
     open: "Google Chrome",
     port: 9000,
+    
     // index: path.join(__dirname, "public/index.html"),
     allowedHosts: ["host.com", "subdomain.host.com"],
     injectHot: (compilerConfig) => compilerConfig.name === "only-include",
